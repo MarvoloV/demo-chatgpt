@@ -10,18 +10,24 @@ export default function MyPage() {
   async function handleSubmit(e) {
     e.preventDefault()
     setIsLoading(true)
-
-    const response = await fetch("/api/get-answer", {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ prompt: prompt })
-    })
-    const data = await response.json()
-    setAnswer(data.text.trim())
-    setIsLoading(false)
+    try {
+      const response = await fetch("/api/get-answer", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ prompt: prompt })
+      })
+      const data = await response.json()
+      console.log("🚀 ~ file: index.js:23 ~ handleSubmit ~ data:", data)
+      setAnswer(data.text.trim())
+      setIsLoading(false)
+    } catch (error) {
+      console.log("🚀 ~ file: index.js:27 ~ handleSubmit ~ error:", error)
+      
+    }
+    
   }
 
   function handleChange(e) {
