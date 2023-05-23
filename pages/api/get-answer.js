@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       res.status(200).json({ text: "Invalid prompt provided." })
     }  
   } catch (error) {
-    console.log("🚀 ~ file: get-answer.js:23 ~ handler ~ error:", error)
+    console.log("🚀 ~ file: get-answer.js:23 ~ handler ~ error 23", error)
     throw error;
   }
   
